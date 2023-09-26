@@ -6,8 +6,8 @@ import pandas as pd
 "Encode: Opens a *.txt file and converts the text into a binary representation of that text."
 
 
-def encoder(excel_file: str):
-    file = pd.read_excel(excel_file, dtype=str)
+def encoder(string: str) -> str:
+    file = pd.read_excel("NAME_THIS_FILE.xlsx", dtype=str)
     bins = list(file["Bin"])
     chars = list(file["Char"])
 
@@ -24,6 +24,12 @@ def encoder(excel_file: str):
     s2 = bin_output.read()
     print(s2)
     bin_output.close()
+    
+    binary = ""
+    for i in range(len(chars)):
+        binary = binary + bins[i]
+    
+    return binary
 
 
 "Decode: Opens a *.txt file with the binary codes and converts it to the characters that the binary represents."
