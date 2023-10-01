@@ -25,7 +25,7 @@ def decode(binary_string: str) -> str:
     for bit in binary_string:
         binary += bit
 
-        if (len(binary) == 7 and binary[0] == "1") or (len(binary) == 5 and binary[0] == "0"):
+        if len(binary) == 5 and binary[0] == "0" or len(binary) == 7:
             output_string += clist[blist.index(binary)]
             binary = ""
 
