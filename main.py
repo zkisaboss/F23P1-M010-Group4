@@ -1,39 +1,71 @@
 import pandas as pd
 
-"Group 4 Project"
 
+def load_file(file_path: str) -> tuple:
+    """
+    Load an Excel file containing character & binary mappings.
 
-"Encode: Opens a *.txt file and converts the text into a binary representation of that text."
+    Args:
+        file_path (str): Path to the Excel file.
 
-
-def encoder(string: str) -> str:
-    file = pd.read_excel("NAME_THIS_FILE.xlsx", dtype=str)
-    bins = list(file["Bin"])
+    Returns:
+        tuple: A tuple containing two lists, one for characters and one for binary representations.
+    """
+    # Load the Excel file
+    file = pd.read_excel(file_path, dtype=str)
     chars = list(file["Char"])
+    bins = list(file["Bin"])
+    return chars, bins
 
-    for i in range(len(bins)):
-        print(bins[i], ": ", chars[i])
 
-    # Open File
-    text_output = open("TextOutput.txt")
-    s1 = text_output.read()
-    print(s1)
-    text_output.close()
+# Load the data from the Excel file
+chars, bins = load_file("F23P1-M010-Group4.xlsx")
 
-    bin_output = open("BinOutput.txt")
-    s2 = bin_output.read()
-    print(s2)
-    bin_output.close()
-    
+
+def encode(input_string: str) -> str:
+    """
+    Encode a text string into its binary representation.
+
+    Args:
+        input_string (str): The input text to encode.
+
+    Returns:
+        str: The binary representation of the input text.
+    """
     binary = ""
-    for i in range(len(chars)):
-        binary = binary + bins[i]
-    
+    for char in input_string:
+        binary += bins[chars.index(char)]
     return binary
 
 
-"Decode: Opens a *.txt file with the binary codes and converts it to the characters that the binary represents."
+# Call the encode function with an example input
+encoded_text = encode("My name is James.")
+print(encoded_text)
 
 
-def decoder():
-    pass
+def decode(binary_string: str) -> str:
+    """
+    Decode a binary string into its corresponding characters.
+
+    Args:
+        binary_string (str): The binary string to decode.
+
+    Returns:
+        str: The decoded text.
+    """
+    decoded_text = ""
+    binary = ""
+
+    for bit in binary_string:
+        binary += bit
+
+        if (len(binary) == 7 and binary[0] == "1") or (len(binary) == 5 and binary[0] == "0"):
+            decoded_text += chars[bins.index(binary)]
+            binary = ""
+
+    return decoded_text
+
+
+# Decode the encoded text
+decoded_text = decode(encoded_text)
+print(decoded_text)
