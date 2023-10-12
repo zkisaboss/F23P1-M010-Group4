@@ -16,7 +16,7 @@ def encode(string_input: str) -> str:
 
 
 # Tasks 3: Write two functions that will be used to convert a binary value to a character (or string).
-def decode_part1(long_binary_string: str) -> list:
+def decode1(long_binary_string: str) -> list:
     output_list = []
     binary = ""
 
@@ -30,7 +30,7 @@ def decode_part1(long_binary_string: str) -> list:
     return output_list
 
 
-def decode_part2(binary_string: str) -> str:
+def decode2(binary_string: str) -> str:
     return CLIST[BLIST.index(binary_string)]
 
 # Step 4: Write a function that reads and creates a text file, “BinOutput.txt” that contains the binary codes.
