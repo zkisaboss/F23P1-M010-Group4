@@ -1,32 +1,36 @@
 import pandas as pd
 
-xlsx = pd.read_excel("F23P1-M010-Group4.xlsx", dtype=str)
-clist = list(xlsx["Char"])
-blist = list(xlsx["Bin"])
+# Task 1: Get the lists of binary numbers and characters from an Excel file
+# To-Do: Add "I" to the Excel file.
+XLSX = pd.read_excel("F23P1-M010-Group4.xlsx", dtype=str)
+CLIST = list(XLSX["Char"])
+BLIST = list(XLSX["Bin"])
 
 
-# To-Do: Support encodings with multiple characters
-def encode(input_string: str) -> str:
+# Task 2: Create a function that returns the binary value for a given string.
+def encode(string_input: str) -> str:
     binary = ""
-    for char in input_string:
-        binary += blist[clist.index(char)]
+    for index, value in enumerate(string_input):
+        binary += BLIST[index]
     return binary
 
 
-# To-Do: Add "I" to the Excel file.
-example_string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .-?!'\":;,"
-print(encode(example_string), len(example_string))
-
-
-def decode(binary_string: str) -> str:
-    output_string = ""
+# Tasks 3: Write two functions that will be used to convert a binary value to a character (or string).
+def decode_part1(long_binary_string: str) -> list:
+    output_list = []
     binary = ""
 
-    for bit in binary_string:
+    for bit in long_binary_string:
         binary += bit
 
         if len(binary) == 5 and binary[0] == "0" or len(binary) == 7:
-            output_string += clist[blist.index(binary)]
+            output_list.append(binary)
             binary = ""
 
-    return output_string
+    return output_list
+
+
+def decode_part2(binary_string: str) -> str:
+    return CLIST[BLIST.index(binary_string)]
+
+# Step 4: Write a function that reads and creates a text file, “BinOutput.txt” that contains the binary codes.
