@@ -59,8 +59,8 @@ def decode(fn="BinOutput.txt"):
     b = b[i + 1:]
     result = ""
     while b != "":
-        binary_value, b = task3a(b)
-        result = result + task3b(binary_value)
+        binary_value, b = decode1(b) # What is ,b for? 
+        result = result + decode2(binary_value)
     a = open("TextOutput.txt", "w+")
     a.write(result)
     a.close()
