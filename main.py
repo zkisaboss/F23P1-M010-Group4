@@ -8,19 +8,19 @@ BLIST = list(XLSX["Bin"])
 
 
 # Task 2: Create a function that returns the binary value for a given string.
-def encode(string_input: str) -> str:
+def encode(string: str) -> str:
     binary = ""
-    for index, value in enumerate(string_input):
+    for index, value in enumerate(string):
         binary += BLIST[index]
     return binary
 
 
 # Tasks 3: Write two functions that will be used to convert a binary value to a character (or string).
-def decode1(long_binary_string: str) -> list:
+def decode1(binary_string: str) -> list:
     output_list = []
     binary = ""
 
-    for bit in long_binary_string:
+    for bit in binary_string:
         binary += bit
 
         if len(binary) == 5 and binary[0] == "0" or len(binary) == 7:
@@ -30,8 +30,8 @@ def decode1(long_binary_string: str) -> list:
     return output_list
 
 
-def decode2(binary_string: str) -> str:
-    return CLIST[BLIST.index(binary_string)]
+def decode2(binary_char: str) -> str:
+    return CLIST[BLIST.index(binary_char)]
 
 # Step 4: Write a function that reads and creates a text file, “BinOutput.txt” that contains the binary codes.
 def code(fn):
