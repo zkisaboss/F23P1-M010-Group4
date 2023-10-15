@@ -42,8 +42,8 @@ def code(fn):
     binary_string = encode(s) # Call task 2 to produce a binary value
     print(binary_string)
     
-    bits = len(binary_string) # calculate num bits in the string
-    binary_string = str(bits) + "." + binary_string #update string with the bit count
+    numbits = len(binary_string) # calculate num bits in the string
+    binary_string = str(numbits) + "." + binary_string #update string with the bit count
 
     f = open("BinOutput.txt", "w+")
     f.write(binary_string)
@@ -51,6 +51,21 @@ def code(fn):
     print(binary_string)
 
 # task 5:
+def decode(fn="BinOutput.txt"):
+    a = open(fn, "r")
+    b = a.read()
+    a.close()
+    i = b.index(".")
+    b = b[i + 1:]
+    result = ""
+    while b != "":
+        binary_value, b = task3a(b)
+        result = result + task3b(binary_value)
+    a = open("TextOutput.txt", "w+")
+    a.write(result)
+    a.close()
+    print(result)
+
 
 # Task 6:
 def compare_files(file1_name, file2_name="TextOutput.txt"):
