@@ -51,3 +51,28 @@ def code(fn):
     print(binary_string)
 
 # task 5:
+
+# Task 6:
+def compare_files(file1_name, file2_name="TextOutput.txt"):
+    try:
+        # Open and read the contents of the first file
+        with open(file1_name, 'r') as file1:
+            content1 = file1.read()
+
+        # Open and read the contents of the second file
+        with open(file2_name, 'r') as file2:
+            content2 = file2.read()
+
+        # Check if the contents of the two files are identical
+        if content1 == content2:
+            return True
+        else:
+            return False
+    except FileNotFoundError:
+        # Handle file not found errors
+        print("One or both of the files does not exist.")
+        return False
+    except Exception as e:
+        # Handle other exceptions
+        print(f"An error occurred: {e}")
+        return False
