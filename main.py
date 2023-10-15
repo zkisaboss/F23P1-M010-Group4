@@ -23,7 +23,7 @@ def decode1(binary_string: str) -> list:
     for bit in binary_string:
         binary += bit
 
-        if len(binary) == 5 and binary[0] == "0" or len(binary) == 7:
+        if len(binary) == 5 and binary[0] == "0" or len(binary) == 7: # appends binary to output_list when complete and resets binary to ""
             output_list.append(binary)
             binary = ""
 
