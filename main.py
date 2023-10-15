@@ -39,12 +39,9 @@ def code(fn):
     s = f.read()
     f.close()
 
-    binary_string = ''
-    while x != '': #Call task 2 to produce a binary value
-        binary_value, s = task_2(s)
-        binary_string = binary_string + binary_value
-        
+    binary_string = encode(s) # Call task 2 to produce a binary value
     print(binary_string)
+    
     bits = len(binary_string) # calculate num bits in the string
     binary_string = str(bits) + "." + binary_string #update string with the bit count
 
