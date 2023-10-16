@@ -68,19 +68,19 @@ def code(fn):
 
 # task 5:
 def decode(fn="BinOutput.txt"):
-    a = open(fn, "r")
+    a = open(fn, "r") # opens file
     b = a.read()
     a.close()
-    i = b.index(".")
-    b = b[i + 1:]
+    x = b.index(".")
+    b = b[x + 1:]
     result = ""
     while b != "":
-        binary_value, b = decode1(b) # What is ,b for? 
-        result = result + decode2(binary_value)
-    a = open("TextOutput.txt", "w+")
+        binary_value, b = decode1(b)  # assigns from task 3
+        result = result + decode2(binary_value) # stores into list
+    a = open("TextOutput.txt", "w+") #opens file and writes into it
     a.write(result)
     a.close()
-    print(result)
+    print(result) # returns result
 
 
 # Task 6:
