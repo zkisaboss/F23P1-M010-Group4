@@ -11,6 +11,7 @@ BLIST = list(XLSX["Bin"])
 def encode(string: str) -> str:
     binary = ""
     for index, value in enumerate(string):
+        index = CLIST.index(value)
         binary += BLIST[index]
     return binary
 
