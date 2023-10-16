@@ -5,7 +5,7 @@ import pandas as pd
 XLSX = pd.read_excel("F23P1-M010-Group4.xlsx", dtype=str)
 CLIST = list(XLSX["Char"])
 BLIST = list(XLSX["Bin"])
-clist = [s.replace("\\n", "\n") for s in clist] # Fix the "\\n" to "\n" in clist
+CLIST = [s.replace("\\n", "\n") for s in CLIST] # Fix the "\\n" to "\n" in clist
 
 # Task 2: Create a function that returns the binary value for a given string.
 def encode(string: str) -> str:
@@ -14,13 +14,13 @@ def encode(string: str) -> str:
     if len(words) > 1: # Check if there is more than one word
         first_word = words[0]
         for char in first_word:
-            index = clist.index(char)
-            binary += blist[index]
+            index = CLIST.index(char)
+            binary += Blist[index]
         result = binary + " " + ' '.join(words[1:]) # Join the encoded binary with the rest of the string
     else: # Join the encoded binary with the rest of the string
         for char in string:
-            index = clist.index(char)
-            binary += blist[index]
+            index = CLIST.index(char)
+            binary += Blist[index]
         result = binary
     return result
 
@@ -46,7 +46,7 @@ def decode2(binary_char: str) -> str:
             output_list.append(string)
             string = ''
     for binary_code in output_list:
-        string_list.append(clist[blist.index(binary_code)])
+        string_list.append(CLIST[Blist.index(binary_code)])
     return ''.join(string_list) # Join the decoded characters in 'string_list' into a single string and return it
 
 # Step 4: Write a function that reads and creates a text file, “BinOutput.txt” that contains the binary codes.
