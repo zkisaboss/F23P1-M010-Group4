@@ -31,7 +31,17 @@ def decode1(binary_string: str) -> list:
 
 
 def decode2(binary_char: str) -> str:
-    return CLIST[BLIST.index(binary_char)]
+    output_list = []
+    string_list = []
+    string = ''
+    for bit in binary_char:
+        string += bit
+        if (len(string) == 5 and string[0] == "0") or (len(string) == 7):
+            output_list.append(string)
+            string = ''
+    for binary_code in output_list:
+        string_list.append(clist[blist.index(binary_code)])
+    return ''.join(string_list)
 
 # Step 4: Write a function that reads and creates a text file, “BinOutput.txt” that contains the binary codes.
 def code(fn):
