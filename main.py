@@ -37,7 +37,7 @@ def decode2(binary_char: str) -> str:
             string = ''
     for binary_code in output_list:
         string_list.append(clist[blist.index(binary_code)])
-    return ''.join(string_list)
+    return ''.join(string_list) # Join the decoded characters in 'string_list' into a single string and return it
 
 # Step 4: Write a function that reads and creates a text file, “BinOutput.txt” that contains the binary codes.
 def code(fn):
