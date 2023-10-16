@@ -5,7 +5,7 @@ import pandas as pd
 XLSX = pd.read_excel("F23P1-M010-Group4.xlsx", dtype=str)
 CLIST = list(XLSX["Char"])
 BLIST = list(XLSX["Bin"])
-CLIST = [s.replace("\\n", "\n") for s in CLIST] # Fix the "\\n" to "\n" in clist
+CLIST = [s.replace("\\n", "\n") for s in CLIST] # Fix the "\\n" to "\n" in CLIST
 
 # Task 2: Create a function that returns the binary value for a given string.
 def encode(string: str) -> str:
