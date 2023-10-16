@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Task 1: Get the lists of binary numbers and characters from an Excel file
-# To-Do: Add "I" to the Excel file.
+open_file = open("F23P1-M010-Group4.xlsx")
 XLSX = pd.read_excel("F23P1-M010-Group4.xlsx", dtype=str)
 CLIST = list(XLSX["Char"])
 BLIST = list(XLSX["Bin"])
