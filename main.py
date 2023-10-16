@@ -10,10 +10,19 @@ BLIST = list(XLSX["Bin"])
 # Task 2: Create a function that returns the binary value for a given string.
 def encode(string: str) -> str:
     binary = ""
-    for index, value in enumerate(string):
-        index = CLIST.index(value)
-        binary += BLIST[index]
-    return binary
+    words = string.split(' ') # Split the string by space
+    if len(words) > 1: # Check if there is more than one word
+        first_word = words[0]
+        for char in first_word:
+            index = clist.index(char)
+            binary += blist[index]
+        result = binary + " " + ' '.join(words[1:]) # Join the encoded binary with the rest of the string
+    else: # Join the encoded binary with the rest of the string
+        for char in string:
+            index = clist.index(char)
+            binary += blist[index]
+        result = binary
+    return result
 
 
 # Tasks 3: Write two functions that will be used to convert a binary value to a character (or string).
