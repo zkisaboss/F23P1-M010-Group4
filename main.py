@@ -15,12 +15,12 @@ def encode(string: str) -> str:
         first_word = words[0]
         for char in first_word:
             index = CLIST.index(char)
-            binary += Blist[index]
+            binary += BLIST[index]
         result = binary + " " + ' '.join(words[1:]) # Join the encoded binary with the rest of the string
     else: # Join the encoded binary with the rest of the string
         for char in string:
             index = CLIST.index(char)
-            binary += Blist[index]
+            binary += BLIST[index]
         result = binary
     return result
 
@@ -46,7 +46,7 @@ def decode2(binary_char: str) -> str:
             output_list.append(string)
             string = ''
     for binary_code in output_list:
-        string_list.append(CLIST[Blist.index(binary_code)])
+        string_list.append(CLIST[BLIST.index(binary_code)])
     return ''.join(string_list) # Join the decoded characters in 'string_list' into a single string and return it
 
 # Step 4: Write a function that reads and creates a text file, “BinOutput.txt” that contains the binary codes.
