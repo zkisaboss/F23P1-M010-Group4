@@ -67,20 +67,33 @@ def code(fn):
     print(binary_string)
 
 # task 5:
-def decode(fn="BinOutput.txt"):
-    a = open(fn, "r") # opens file
-    b = a.read()
-    a.close()
-    x = b.index(".")
-    b = b[x + 1:]
-    result = ""
-    while b != "":
-        binary_value, b = decode1(b)  # assigns from task 3
-        result = result + decode2(binary_value) # stores into list
-    a = open("TextOutput.txt", "w+") #opens file and writes into it
-    a.write(result)
-    a.close()
-    print(result) # returns result
+def bin_to_char(bin_input: str) -> str:
+    return chars[bins.index(bin_input)]
+    
+def decode(file_input: str = "BinOutput.txt") -> None:
+    f_input = open(file_input) # opens file
+    bin_input = f_input.read()
+    af_input.close()
+    
+    bin_input = bin_input.split(".")
+    bin_input = bin_input[1]
+    bin_input = decode1(bin_input)
+
+    txt_out = open("TextOuput.txt", "w")
+
+    for char in bin_input:
+        txt_out.write(bin_to_char(char))
+            
+    txt_out.close()
+    return     
+    # result = ""
+    # while b != "":
+        # binary_value, b = decode1(b)  # assigns from task 3
+        # result = result + decode2(binary_value) # stores into list
+    # a = open("TextOutput.txt", "w+") #opens file and writes into it
+    # a.write(result)
+    # a.close()
+    # print(result) # returns result
 
 
 # Task 6:
